@@ -3,14 +3,14 @@
 # Disabled unnecessary services
 - name: Disabled unnecessary services on RedHat/CentOS6
   service: name={{ item }} state=stopped enabled=no
-  with_items: service_redhat6
+  with_items: "{{ service_redhat6 }}"
   tags: tuneservice_RedHat6
   ignore_errors: True
   when: ansible_os_family == 'RedHat' and ansible_distribution_major_version == '6'
 
 - name: Disabled unnecessary services on RedHat/CentOS7
   service: name={{ item }} state=stopped enabled=no
-  with_items: service_redhat7
+  with_items: "{{ service_redhat7 }}"
   tags: tuneservice_RedHat7
   ignore_errors: True
   when: ansible_os_family == 'RedHat' and ansible_distribution_major_version == '7'
